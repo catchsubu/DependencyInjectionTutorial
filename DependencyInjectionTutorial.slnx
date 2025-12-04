@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TutorialDI.App/TutorialDI.App.csproj" />
+  <Project Path="TutorialDI.Core/TutorialDI.Core.csproj" />
+  <Project Path="TutorialDI.Instrument/TutorialDI.Instrument.csproj" />
+</Solution>
