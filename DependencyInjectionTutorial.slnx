@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/net472/">
-    <Project Path="net472/TutorialDI.App/TutorialDI.App.csproj" />
+    <Project Path="net472/TutorialDI.App/TutorialDI.App.csproj" Id="92b1d76f-e574-4cd7-87b0-0d30933b8ba4" />
     <Project Path="net472/TutorialDI.Core/TutorialDI.Core.csproj" Id="48264bcf-77a8-4352-8dc1-71a352fc6b8a" />
     <Project Path="net472/TutorialDI.Instrument/TutorialDI.Instrument.csproj" Id="16cae060-16d7-4a93-bcb0-585d19f614d2" />
   </Folder>
