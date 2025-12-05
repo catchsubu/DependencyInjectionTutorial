@@ -1,48 +1,6 @@
-# Project Tutorial
+# Dependency Injection Tutorial for .NET
 
-## Overview
-
-This repository contains a .NET Framework 4.7.2 solution. This README provides a quick-start tutorial to build, test, and contribute.
-
-## Prerequisites
-
-- Visual Studio 2026 with .NET Framework 4.7.2 targeting packs installed.
-- Git (2.30+)
-- Optional: preferred test runner (MSTest, NUnit, or xUnit)
-
-## Build
-
-1. Open the solution in Visual Studio 2026.
-2. Restore NuGet packages: __Project > Restore NuGet Packages__ (or run `nuget restore`).
-3. Build the solution: __Build > Build Solution__.
-
-From the command line:
-
-## Run Tests
-
-- Use Test Explorer in Visual Studio or run via command line with the chosen test runner.
-- Example with vstest.console:
-
-## Contributing
-
-Please see `CONTRIBUTING.md` for contribution guidelines, branch and PR workflows, coding standards, and testing requirements.
-
-## Common Visual Studio Settings
-
-Check or set recommended editor preferences:
-
-- __Tools > Options > Text Editor > C# > Code Style__
-- __Tools > Options > Text Editor > C# > Formatting__
-- __Tools > Options > Environment > Documents__
-
-## Additional Notes
-
-- This repo targets .NET Framework 4.7.2; if you need to upgrade or modernize, open an Issue first.
-- Add `.editorconfig` to enforce project formatting rules if not already present.
-
-# Dependency Injection Tutorial for .NET Framework
-
-Welcome! This is a **beginner-friendly tutorial project** demonstrating **Dependency Injection (DI)** concepts in C# and .NET Framework. This repository is designed to accompany my YouTube tutorial series.
+Welcome! This is a **beginner-friendly tutorial project** demonstrating **Dependency Injection (DI)** concepts in C# across multiple .NET platforms. This repository is designed to accompany my YouTube tutorial series.
 
 ## 🎯 What is Dependency Injection?
 
@@ -58,24 +16,47 @@ Welcome! This is a **beginner-friendly tutorial project** demonstrating **Depend
 
 ## 📁 Project Structure
 
-This solution demonstrates DI with a real-world analogy: **Writers using different Writing Instruments** (Pens, Pencils, etc.)
+This solution demonstrates DI with a real-world analogy: **Writers using different Writing Instruments** (Pens, Pencils, etc.) across two different .NET platforms.
 
 ```
 DependencyInjectionTutorial/
-├── TutorialDI.Core/                # Core abstractions & interfaces
-│   ├── IWritingInstrument.cs       # Interface for all writing instruments
-│   └── Writer.cs                   # Writer class that uses an instrument
 │
-├── TutorialDI.Instrument/          # Concrete implementations
-│   ├── Pencil.cs
-│   ├── BallPen.cs
-│   ├── FountainPen.cs
-│   └── GelPen.cs
+├── net472/                              # .NET Framework 4.7.2 Examples
+│   ├── TutorialDI.App/                  # Console application (entry point)
+│   │   ├── Program.cs
+│   │   ├── RunManualDI.cs               # Example 1: Manual DI
+│   │   ├── RunContainerDI.cs            # Example 2: Using Autofac container
+│   │   ├── App.config
+│   │   └── TutorialDI.App.csproj
+│   │
+│   ├── TutorialDI.Core/                 # Core abstractions & interfaces
+│   │   ├── IWritingInstrument.cs        # Interface for writing instruments
+│   │   ├── Writer.cs                    # Writer class that uses an instrument
+│   │   └── TutorialDI.Core.csproj
+│   │
+│   └── TutorialDI.Instrument/           # Concrete implementations
+│       ├── Pencil.cs
+│       ├── BallPen.cs
+│       ├── FountainPen.cs
+│       ├── GelPen.cs
+│       └── TutorialDI.Instrument.csproj
 │
-└── TutorialDI.App/                 # Console application (entry point)
-    ├── Program.cs                  # Main entry point
-    ├── RunManualDI.cs              # Example 1: Manual DI
-    └── RunContainerDI.cs           # Example 2: Using Autofac container
+├── netcore/                             # .NET Core (Modern .NET) Examples
+│   └── TutorialDI.NetCore.Example/      # Single project with all examples
+│       ├── Program.cs                   # Entry point (console app)
+│       ├── TutorialDI.NetCore.Example.csproj
+│       ├── Core/                        # Core abstractions
+│       │   ├── IWritingInstrument.cs
+│       │   └── Writer.cs
+│       └── Instrument/                  # Concrete implementations
+│           ├── Pencil.cs
+│           └── FountainPen.cs
+│
+└── Shared Documentation/
+    ├── README.md                        # This file
+    ├── CONTRIBUTING.md                  # Contribution guidelines
+    ├── LICENSE.txt                      # MIT License
+    └── .gitattributes                   # Git line ending config
 ```
 
 ---
@@ -83,8 +64,9 @@ DependencyInjectionTutorial/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- **Visual Studio 2019+** (or Visual Studio Code)
-- **.NET Framework 4.7.2+**
+- **Visual Studio 2019+** or **Visual Studio Code**
+- **.NET Framework 4.7.2+** (for .NET Framework examples)
+- **.NET 10.0+** (for .NET Core examples)
 - Basic understanding of C# and OOP concepts
 
 ### Installation
@@ -97,9 +79,11 @@ DependencyInjectionTutorial/
 
 2. **Open in Visual Studio:**
    - Open `DependencyInjectionTutorial.slnx` in Visual Studio
+   - Or open individual projects in VS Code
 
 3. **Restore NuGet Packages:**
-   - Visual Studio will auto-restore, or run:
+   - Visual Studio will auto-restore
+   - Or run:
    ```bash
    nuget restore
    ```
@@ -107,8 +91,14 @@ DependencyInjectionTutorial/
 4. **Build the Solution:**
    - Press `Ctrl + Shift + B` or go to **Build > Build Solution**
 
-5. **Run the Application:**
+5. **Run Applications:**
+
+   **For .NET Framework (net472):**
    - Set `TutorialDI.App` as the startup project
+   - Press `F5` or click **Start**
+
+   **For .NET Core (netcore):**
+   - Set `TutorialDI.NetCore.Example` as the startup project
    - Press `F5` or click **Start**
 
 ---
@@ -167,7 +157,7 @@ writer2.Write();
 
 ## 📚 Two Approaches Demonstrated
 
-### 1️⃣ Manual Dependency Injection (`RunManualDI.cs`)
+### 1️⃣ Manual Dependency Injection
 
 Manually creating and passing dependencies:
 
@@ -188,9 +178,9 @@ writer2.Write();
 **Pros:** Simple, no external dependencies  
 **Cons:** Manual management, gets complex with many dependencies
 
-### 2️⃣ DI Container (`RunContainerDI.cs`)
+### 2️⃣ DI Container
 
-Using **Autofac** - a popular DI container:
+#### .NET Framework: Using Autofac
 
 ```csharp
 // Configure container
@@ -206,28 +196,43 @@ using (var container = builder.Build())
 }
 ```
 
+#### .NET Core: Using Microsoft.Extensions.DependencyInjection
+
+```csharp
+// Configure services
+var services = new ServiceCollection();
+services.AddScoped<IWritingInstrument, Pencil>();
+services.AddScoped<Writer>();
+
+var serviceProvider = services.BuildServiceProvider();
+
+// Resolve dependencies automatically
+var writer = serviceProvider.GetRequiredService<Writer>();
+writer.Write();
+```
+
 **Pros:** Scalable, automatic dependency resolution, easy to manage  
-**Cons:** Additional dependency (Autofac), slightly more complex setup
+**Cons:** Additional dependencies, slightly more complex setup
 
 ---
 
-## 🎬 YouTube Tutorial Videos
+## 🎯 Platform Comparison
 
-Follow along with these videos:
-
-1. **Part 1:** Introduction to Dependency Injection
-2. **Part 2:** Understanding the Problem (Tight Coupling)
-3. **Part 3:** Manual Dependency Injection
-4. **Part 4:** Using DI Containers (Autofac)
-5. **Part 5:** Best Practices & Common Mistakes
-
-> 📌 Each video corresponds to the code in this repository
+| Feature | .NET Framework 4.7.2 | .NET Core 10.0 |
+|---------|----------------------|----------------|
+| DI Container | Autofac | Microsoft.Extensions.DI |
+| Project Structure | Multi-project | Single project |
+| Configuration | App.config | appsettings.json (if added) |
+| Execution | Console app (.exe) | Console app (.exe/.dll) |
+| Performance | Good | Excellent |
+| Cross-platform | Windows only | Windows, Mac, Linux |
+| Use Case | Legacy/Enterprise | Modern/Cloud |
 
 ---
 
-## 🏗️ Project Components
+## 📖 Project Components
 
-### `TutorialDI.Core`
+### `TutorialDI.Core` (.NET Framework) / `Core/` (.NET Core)
 **Purpose:** Contains abstractions (interfaces) and core classes
 
 - **`IWritingInstrument.cs`** - Interface defining what a writing instrument can do
@@ -257,33 +262,40 @@ Follow along with these videos:
   }
   ```
 
-### `TutorialDI.Instrument`
+### `TutorialDI.Instrument` (.NET Framework) / `Instrument/` (.NET Core)
 **Purpose:** Concrete implementations of `IWritingInstrument`
 
 - **`Pencil.cs`** - Implements `IWritingInstrument`
-- **`BallPen.cs`** - Implements `IWritingInstrument`
+- **`BallPen.cs`** - Implements `IWritingInstrument` (Framework only)
 - **`FountainPen.cs`** - Implements `IWritingInstrument`
-- **`GelPen.cs`** - Implements `IWritingInstrument`
+- **`GelPen.cs`** - Implements `IWritingInstrument` (Framework only)
 
 Each class implements the interface differently, showing how DI allows you to swap implementations.
 
-### `TutorialDI.App`
+### `TutorialDI.App` (.NET Framework)
 **Purpose:** Console application demonstrating both approaches
 
 - **`Program.cs`** - Entry point, menu to choose which example to run
 - **`RunManualDI.cs`** - Example: Manual dependency injection
 - **`RunContainerDI.cs`** - Example: Using Autofac DI container
 
+### `TutorialDI.NetCore.Example` (.NET Core)
+**Purpose:** Console application demonstrating .NET Core built-in DI
+
+- **`Program.cs`** - Entry point with integrated DI setup using Microsoft.Extensions.DependencyInjection
+
 ---
 
 ## 🔧 Technologies Used
 
-| Technology | Version | Purpose |
-|---|---|---|
-| .NET Framework | 4.7.2 | Application framework |
-| C# | 7.3+ | Programming language |
-| Autofac | 9.0.0 | DI Container |
-| Visual Studio | 2019+ | IDE |
+| Technology | Version | Purpose | Platform |
+|---|---|---|---|
+| .NET Framework | 4.7.2 | Application framework | net472 |
+| .NET Core | 10.0 | Modern framework | netcore |
+| C# | 7.3+ | Programming language | Both |
+| Autofac | 9.0.0 | DI Container | net472 |
+| Microsoft.Extensions.DI | Latest | Built-in DI | netcore |
+| Visual Studio | 2019+ | IDE | Both |
 
 ---
 
@@ -294,9 +306,11 @@ After completing this tutorial, you will:
 - ✅ Understand the concept of Dependency Injection
 - ✅ Recognize tight coupling problems in code
 - ✅ Implement manual dependency injection
-- ✅ Use a DI container (Autofac) for automatic resolution
+- ✅ Use DI containers (Autofac & Microsoft.Extensions.DI)
+- ✅ Know the differences between .NET Framework and .NET Core DI
 - ✅ Know when and how to apply DI in your projects
 - ✅ Write more testable and maintainable code
+- ✅ Understand modern .NET development practices
 
 ---
 
@@ -329,6 +343,23 @@ public void Writer_ShouldUseInjectedInstrument()
 
 ---
 
+## 🎬 YouTube Tutorial Videos
+
+Follow along with these videos:
+
+1. **Part 1:** Introduction to Dependency Injection
+2. **Part 2:** Understanding the Problem (Tight Coupling)
+3. **Part 3:** Manual Dependency Injection (.NET Framework)
+4. **Part 4:** Using Autofac DI Container (.NET Framework)
+5. **Part 5:** Dependency Injection in .NET Core
+6. **Part 6:** Built-in DI in Microsoft.Extensions
+7. **Part 7:** Best Practices & Common Mistakes
+8. **Bonus:** Framework vs Core Comparison
+
+> 📌 Each video corresponds to the code in this repository
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
@@ -343,14 +374,20 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 
 ## ❓ FAQ
 
+### Q: Which version should I start with?
+**A:** Start with **.NET Framework** (net472) if you're learning DI basics. Then move to **.NET Core** to see modern practices.
+
 ### Q: Do I need to know Autofac before starting?
-**A:** No! This tutorial starts from scratch and explains everything. Autofac is introduced in the second approach.
+**A:** No! This tutorial starts from scratch and explains everything. Autofac is introduced in the second approach for Framework.
+
+### Q: What's the difference between Autofac and Microsoft.Extensions.DI?
+**A:** Autofac is a third-party container with advanced features. Microsoft.Extensions.DI is built-in and simpler, perfect for modern .NET Core apps.
 
 ### Q: Can I use this in production?
-**A:** This is a tutorial project for learning. For production, use industry-standard DI containers like Autofac, Ninject, or the built-in .NET Core DI.
+**A:** This is a tutorial project for learning. For production, use industry-standard practices with proper DI containers.
 
-### Q: Why use `.NET Framework` instead of `.NET Core`?
-**A:** This tutorial covers `.NET Framework 4.7.2` for educational purposes. The concepts apply to all .NET versions.
+### Q: Why both .NET Framework and .NET Core?
+**A:** To show you that DI concepts are universal, but implementations differ between platforms.
 
 ### Q: What if I get compilation errors?
 **A:** Make sure all NuGet packages are restored. Run `nuget restore` in the Package Manager Console.
@@ -362,6 +399,7 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 - [Microsoft Docs: Dependency Injection](https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection)
 - [Autofac Documentation](https://autofac.readthedocs.io/)
 - [SOLID Principles](https://en.wikipedia.org/wiki/SOLID)
+- [.NET Framework vs .NET Core](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-your-app)
 
 ---
 
@@ -369,7 +407,7 @@ This project is licensed under the MIT License - see [LICENSE.txt](LICENSE.txt) 
 
 **Subrata Mohanta**
 
-A passionate software developer and educator dedicated to making complex concepts simple and understandable. This tutorial series is designed to help developers at all levels master Dependency Injection.
+A passionate software developer and educator dedicated to making complex concepts simple and understandable. This tutorial series is designed to help developers at all levels master Dependency Injection across multiple .NET platforms.
 
 ### Connect with Me:
 - 🔗 **LinkedIn:** [linkedin.com/in/subratamohanta](https://www.linkedin.com/in/subratamohanta)
@@ -389,5 +427,5 @@ Happy Learning! 🚀
 
 ---
 
-**Last Updated:** December 5, 2025  
+**Last Updated:** December 6, 2025  
 **Author:** Subrata Mohanta
