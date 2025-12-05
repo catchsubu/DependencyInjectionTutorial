@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5EBA629F-4B74-4E5D-9FA3-45D15BA6A615}</ProjectGuid>
+    <ProjectGuid>{92B1D76F-E574-4CD7-87B0-0D30933B8BA4}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>TutorialDI.App</RootNamespace>
     <AssemblyName>TutorialDI.App</AssemblyName>
@@ -82,7 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TutorialDI.Core\TutorialDI.Core.csproj">
-      <Project>{48264BCF-77A8-4352-8DC1-71A352FC6B8A}</Project>
+      <Project>{48264bcf-77a8-4352-8dc1-71a352fc6b8a}</Project>
       <Name>TutorialDI.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\TutorialDI.Instrument\TutorialDI.Instrument.csproj">

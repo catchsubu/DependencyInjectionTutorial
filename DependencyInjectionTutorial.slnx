@@ -1,5 +1,10 @@
 <Solution>
-  <Project Path="TutorialDI.App/TutorialDI.App.csproj" />
-  <Project Path="TutorialDI.Core/TutorialDI.Core.csproj" />
-  <Project Path="TutorialDI.Instrument/TutorialDI.Instrument.csproj" />
+  <Folder Name="/net472/">
+    <Project Path="net472/TutorialDI.App/TutorialDI.App.csproj" />
+    <Project Path="net472/TutorialDI.Core/TutorialDI.Core.csproj" Id="48264bcf-77a8-4352-8dc1-71a352fc6b8a" />
+    <Project Path="net472/TutorialDI.Instrument/TutorialDI.Instrument.csproj" Id="16cae060-16d7-4a93-bcb0-585d19f614d2" />
+  </Folder>
+  <Folder Name="/netcore/">
+    <Project Path="netcore/TutorialDI.NetCore.Example/TutorialDI.NetCore.Example.csproj" Id="62aa218b-acf2-42ac-85c4-d8f4e917353f" />
+  </Folder>
 </Solution>
