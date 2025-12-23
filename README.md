@@ -411,7 +411,7 @@ A passionate software developer and educator dedicated to making complex concept
 
 ### Connect with Me:
 - 🔗 **LinkedIn:** [linkedin.com/in/subratamohanta](https://www.linkedin.com/in/subratamohanta)
-- 📺 **YouTube:** [Channel Link - Coming Soon]
+- 📺 **YouTube:** [TechnicalOdiyaToka](https://www.youtube.com/@technicalodiyatoka)
 - 💻 **GitHub:** [@subratamohanta](https://github.com/subratamohanta)
 
 ---
